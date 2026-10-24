@@ -24,6 +24,10 @@ export default function isFQDN(str, options) {
     str = str.substring(2);
   }
 
+  if (!options.ignore_max_length && str.length > 253) {
+    return false;
+  }
+
   const parts = str.split('.');
   const tld = parts[parts.length - 1];
 
